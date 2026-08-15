@@ -1,0 +1,417 @@
+:root {
+  --pitch-dark: #0f2e1f;
+  --pitch: #16382a;
+  --pitch-line: rgba(247, 247, 242, 0.14);
+  --chalk: #f7f7f2;
+  --paper: #efebdd;
+  --paper-dim: #e4ddc8;
+  --ink: #16261e;
+  --ink-dim: #5c6a61;
+  --gold: #e9a23b;
+  --radius: 3px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--pitch-dark);
+  color: var(--chalk);
+  font-family: "Inter", -apple-system, sans-serif;
+}
+
+.display {
+  font-family: "Teko", sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+}
+
+.mono {
+  font-family: "JetBrains Mono", monospace;
+}
+
+.wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 24px 96px;
+}
+
+.pitch-lines {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: radial-gradient(
+      circle at 50% 50%,
+      transparent 0,
+      transparent 90px,
+      var(--pitch-line) 91px,
+      var(--pitch-line) 92px,
+      transparent 93px
+    ),
+    linear-gradient(var(--pitch) 0%, var(--pitch-dark) 70%);
+  background-position: 50% 12%, 0 0;
+}
+
+/* Sport tab switcher */
+.sport-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  margin-bottom: 8px;
+}
+
+.sport-tab {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(247, 247, 242, 0.5);
+  background: none;
+  border: 1px solid var(--pitch-line);
+  border-radius: var(--radius);
+  padding: 8px 18px;
+  cursor: pointer;
+  transition: color 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+}
+
+.sport-tab:hover {
+  color: rgba(247, 247, 242, 0.8);
+}
+
+.sport-tab.active {
+  color: var(--pitch-dark);
+  background: var(--gold);
+  border-color: var(--gold);
+  font-weight: 500;
+}
+
+.hero {
+  text-align: center;
+  padding: 32px 0 40px;
+  border-bottom: 1px solid var(--pitch-line);
+  margin-bottom: 40px;
+}
+
+.hero .eyebrow {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+
+.hero h1 {
+  font-size: 64px;
+  line-height: 0.95;
+  margin: 0 0 12px;
+}
+
+.hero p {
+  color: rgba(247, 247, 242, 0.65);
+  font-size: 15px;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+/* Upload zone */
+.dropzone {
+  border: 1.5px dashed var(--pitch-line);
+  border-radius: var(--radius);
+  padding: 48px 24px;
+  text-align: center;
+  background: rgba(247, 247, 242, 0.03);
+  transition: border-color 0.15s ease, background 0.15s ease;
+  cursor: pointer;
+  display: block;
+}
+
+.dropzone:hover,
+.dropzone.active {
+  border-color: var(--gold);
+  background: rgba(233, 162, 59, 0.06);
+}
+
+.dropzone input {
+  display: none;
+}
+
+.dropzone .label {
+  font-size: 18px;
+  margin-bottom: 6px;
+}
+
+.dropzone .hint {
+  font-size: 13px;
+  color: rgba(247, 247, 242, 0.5);
+}
+
+.error-box {
+  margin-top: 16px;
+  padding: 12px 16px;
+  border: 1px solid #b3462c;
+  background: rgba(179, 70, 44, 0.12);
+  border-radius: var(--radius);
+  font-size: 14px;
+  color: #f2a993;
+}
+
+/* Section headers */
+.section-title {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin: 56px 0 20px;
+}
+
+.section-title .num {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 12px;
+  color: var(--gold);
+}
+
+.section-title h2 {
+  font-family: "Teko", sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  font-size: 30px;
+  margin: 0;
+}
+
+.reset-btn {
+  margin-left: auto;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 12px;
+  color: rgba(247, 247, 242, 0.6);
+  background: none;
+  border: 1px solid var(--pitch-line);
+  border-radius: var(--radius);
+  padding: 6px 12px;
+  cursor: pointer;
+}
+
+.reset-btn:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+/* Roster cards */
+.roster-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 16px;
+}
+
+.team-card {
+  background: var(--paper);
+  color: var(--ink);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.team-card .team-head {
+  padding: 14px 16px 10px;
+  border-bottom: 2px solid var(--ink);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.team-card .team-head h3 {
+  font-family: "Teko", sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 24px;
+  margin: 0;
+}
+
+.team-card .team-head .count {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 12px;
+  color: var(--ink-dim);
+}
+
+.pos-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 16px;
+  border-bottom: 1px solid var(--paper-dim);
+  font-size: 13px;
+}
+
+.pos-row:last-child {
+  border-bottom: none;
+}
+
+.pos-tag {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--chalk);
+  min-width: 18px;
+  height: 18px;
+  padding: 0 4px;
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.pos-row .pname {
+  flex: 1;
+}
+
+.pos-row .shared-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--gold);
+  flex-shrink: 0;
+}
+
+/* Shared players list */
+.shared-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.shared-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  background: rgba(247, 247, 242, 0.04);
+  border-left: 2px solid var(--gold);
+  border-radius: var(--radius);
+  font-size: 14px;
+}
+
+.shared-item .sname {
+  font-weight: 600;
+  min-width: 140px;
+}
+
+.shared-item .steams {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 12px;
+  color: rgba(247, 247, 242, 0.55);
+}
+
+.empty-note {
+  font-size: 14px;
+  color: rgba(247, 247, 242, 0.5);
+  font-style: italic;
+}
+
+/* Similarity pairs */
+.pair-row {
+  padding: 16px;
+  background: rgba(247, 247, 242, 0.04);
+  border-radius: var(--radius);
+  margin-bottom: 10px;
+}
+
+.pair-row .pair-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.pair-row .pair-teams {
+  font-family: "Teko", sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  text-transform: uppercase;
+}
+
+.pair-row .pair-score {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 13px;
+  color: var(--gold);
+}
+
+.bar-compare {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.bar-line {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.bar-line .bar-label {
+  width: 90px;
+  font-size: 12px;
+  color: rgba(247, 247, 242, 0.6);
+  flex-shrink: 0;
+}
+
+.bar-track {
+  flex: 1;
+  display: flex;
+  height: 6px;
+  border-radius: 3px;
+  overflow: hidden;
+  background: rgba(247, 247, 242, 0.08);
+}
+
+.bar-seg {
+  height: 100%;
+}
+
+.pair-shared {
+  margin-top: 10px;
+  font-size: 12px;
+  color: rgba(247, 247, 242, 0.55);
+}
+
+.pair-shared strong {
+  color: var(--gold);
+  font-weight: 500;
+}
+
+.legend {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  font-size: 12px;
+  color: rgba(247, 247, 242, 0.6);
+  margin-top: 8px;
+}
+
+.legend .item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.legend .swatch {
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+}
+
+@media (max-width: 600px) {
+  .hero h1 {
+    font-size: 44px;
+  }
+  .wrap {
+    padding: 32px 16px 64px;
+  }
+  .sport-tabs {
+    flex-wrap: wrap;
+  }
+}
